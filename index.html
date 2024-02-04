@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Password Manager</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body onload="initMainPage()">
+  <div id="main">
+    <h1 id="page_heading">Password Manager <span class="clickable" id="logout_link" onclick="signOut()">Sign Out</span></h1>
+    <section>
+      <table id="entries_table">
+        <thead>
+          <tr>
+            <th class="left">Name or URL</th>
+            <th class="left"><input type="text" id="search_field" oninput="enableSearch(event)"><span class="icon_button clickable" title="Search" onclick="search()">&#128270;</span></th>
+            <th class="left"><span class="icon_button clickable" onclick="addNew()">&nbsp;&nbsp;+ Add New&nbsp;&nbsp;</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- This is the format for each table row
+            <td colspan="2">Some super secret encrypted password</td>
+            <td>
+              <span class="icon_button clickable" title="View" onclick="revealPassword(event)">&#128065;</span>
+              <span class="icon_button clickable" title="Edit" onclick="editPassword(event)">&#128393;</span>
+              <span class="icon_button clickable" title="Delete" onclick="deletePassword(event)">&#128465;</span>
+            </td>
+            -->
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Pop Up Dialogs -->
+  <div id="graybox_background">
+
+    <!-- Unlock Application Dialog -->
+    <div class="dialog" id="unlock_dlg">
+      <h3>Enter your passphrase</h3>
+      <p>Enter your passphrase to unlock the application.</p>
+      <form onsubmit="unlock(event)">
+        <input type="password" id="unlock_passphrase_field" size="50" oninput="enableUnlock(event)">
+        <input type="submit" class="button" id="submit_unlock_passphrase_button" value="OK" disabled>
+      </form>
+    </div>
+
+    <!-- New Entry Dialog -->
+    <div class="dialog" id="new_entry_dlg">
+      <h3>Enter new password</h3>
+      <form onsubmit="addNewEntry(event)" onreset="cancelAddNewEntry(event)">
+        <div class="form_field">
+          <label for="new_entry_name_field" class="form_label">Name or URL</label>
+          <input type="text" id="new_entry_name_field" size="50" oninput="enableAddNewEntry()">
+        </div>
+        <div class="form_field">
+          <label for="new_entry_password_field" class="form_label">Password</label>
+          <input type="password" id="new_entry_password_field" size="50" oninput="enableSubmitNewEntry()">
+          </div>
+        <div class="form_field">
+          <label for="new_entry_confirm_password_field" class="form_label">Confirm</label>
+          <input type="password" id="new_entry_confirm_password_field" size="50" oninput="enableSubmitNewEntry()">
+          </div>
+          <div class="form_field">
+            <input type="submit" class="button" id="add_new_entry_button" value="OK">
+            <input type="reset" class="button" value="Cancel">
+          </div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

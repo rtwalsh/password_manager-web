@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Password Manager - Set Passphrase</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body onload="initConfigurePage()">
+  <div id="main">
+    <h1 id="page_heading">Password Manager</h1>
+    <h2>Set Passphrase</h2>
+    <p>Before you may use Password Manager, you must set a passphrase.
+    The passphrase will be stored encrypted in the application, and it cannot
+    be recovered.  If you forget the passphrase, you will no longer be able to 
+    access your data.</p>
+    <form onsubmit="setPassphrase(event)">
+      <div class="form_field">
+        <label for="passphrase_field" class="form_label">Enter Passphrase</label>
+        <input type="password" size="50" id="passphrase_field" oninput="enableSePassphrase()">
+      </div>
+      <div class="form_field">
+        <label for="confirm_passphrase_field" class="form_label">Confirm Passphrase</label>
+        <input type="password" size="50" id="confirm_passphrase_field" oninput="enableSubmitPassphrase()">
+      </div>
+      <div class="form_field">
+        <input type="submit" class="big_button" value="Continue" id="set_passphrase_button" disabled>
+      </div>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
